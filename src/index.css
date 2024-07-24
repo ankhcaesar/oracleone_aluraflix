@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box
+}
+
+:root {
+    font-family: "Roboto";
+    max-width: 1440px;
+    
+    --bkPrincipal_black: #191919;
+    --bkPrincipal_gray:#262626;
+    --bkSecundario_darkblue:#030910;
+    --bkModal:#03122f;
+    --shadowModal:#;
+
+    /*gradiente*/
+    --c1Scrollbar:#2271D1;
+    --c2Scrollbar:#113A6B;
+
+    /*17%*/
+    --bkscrollbar:#2271D1;
+    
+    --error:#e53935;
+
+
+
+}
+
