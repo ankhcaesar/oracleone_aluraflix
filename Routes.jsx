@@ -8,8 +8,8 @@ function AppRoute() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />}>
-                    <Route index element={<Inicio/>}/>
-                    <Route path="*" element={<E404/>}/>
+                    <Route index element={<Inicio />} />
+                    <Route path="*" element={<E404 />} />
                 </Route>
             </Routes>
         </BrowserRouter>

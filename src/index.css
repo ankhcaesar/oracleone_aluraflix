@@ -6,24 +6,40 @@
 
 :root {
     font-family: "Roboto";
-    max-width: 1440px;
-    
+   
+
     --bkPrincipal_black: #191919;
-    --bkPrincipal_gray:#262626;
-    --bkSecundario_darkblue:#030910;
-    --bkModal:#03122f;
-    --shadowModal:#;
+    --bkPrincipal_gray: #262626;
+    /* rgb(38,38,38)*/
+    
+    --bkSecundario_darkblue: #030910;
+    --Principal_blue:#2271D1;
+    /* rgb(34, 113, 209); */
+    --Realblack:#000;
+    --RealWhite:#fff;
+
+
+    --bkModal: #03122f;
+    --shadowModal: #;
 
     /*gradiente*/
-    --c1Scrollbar:#2271D1;
-    --c2Scrollbar:#113A6B;
+    --c1Scrollbar: #2271D1;
+    --c2Scrollbar: #113A6B;
 
     /*17%*/
-    --bkscrollbar:#2271D1;
-    
-    --error:#e53935;
+    --bkscrollbar: #2271D1;
+
+    --error: #e53935;
+
+    display: flex;
+    justify-content: center;
 
 
 
 }
 
+body {
+    width: 100vw;
+    max-width: 1440px;
+    background-color: var(--bkPrincipal_black);
+}

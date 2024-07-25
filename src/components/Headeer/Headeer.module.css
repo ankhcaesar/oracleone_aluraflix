@@ -1,0 +1,54 @@
+.headeer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bkPrincipal_gray);
+    height: 10vh;
+    padding: 0 30px;
+    border-top-style: solid;
+    border-color: var(--Principal_blue);
+    border-width: 4px;
+    box-shadow: 0px 5px 29px 2px var(--Principal_blue)  0.7;
+}
+
+.botonPasivo {
+    cursor: pointer;
+    border-style: solid;
+    border-color: var(--RealWhite);
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: transparent;
+    padding: 5px 10px;
+    margin: 0 15px;
+    color: var(--RealWhite);
+
+    &:hover {
+        transition: 0.7s;
+        border-color: var(--Principal_blue);
+        background-color: var(--Realblack);
+        box-shadow: inset 0px 0px 3px 2px var(--Principal_blue);
+        color: var(--Principal_blue);
+    }
+}
+
+.botonActivo {
+    cursor: pointer;
+    border-style: solid;
+    border-color: var(--Principal_blue);
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: var(--Realblack);
+    padding: 5px 10px;
+    margin: 0 15px;
+    color: var(--Principal_blue);
+    box-shadow: inset 0px 0px 3px 2px var(--Principal_blue);
+
+    &:hover {
+        transition: 0.7s;
+        border-color: var(--RealWhite);
+        box-shadow: inset 0px 0px 3px 2px var(--RealWhite);
+        color: var(--RealWhite);
+        background-color: transparent;
+    }
+
+}

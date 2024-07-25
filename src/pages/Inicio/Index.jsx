@@ -1,6 +1,9 @@
-function Inicio(){
-    return(
+function Inicio() {
+    return (
         <>
+            <section>
+
+            </section>
         </>
     )
 }
