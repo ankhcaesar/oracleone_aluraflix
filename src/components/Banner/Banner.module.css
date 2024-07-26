@@ -1,0 +1,18 @@
+.imgFondo{
+    width: 100%;
+    height: 70vh;
+    opacity: .7;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.grardiente {
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(var(--bkSecundario_darkblue), var(--Principal_blue));
+    opacity: 0.56;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

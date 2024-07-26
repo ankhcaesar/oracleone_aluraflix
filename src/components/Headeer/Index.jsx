@@ -1,11 +1,13 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import styles from "./Headeer.module.css"
 import { Link } from "react-router-dom"
 import { GlobalContext } from "../../context/Globalcontext"
 
-function Headeer({img}) {
-    const { botonHome, setBotonHome, botonNuevoVideo, setBotonNuevoVideo } = useContext(GlobalContext)
+function Headeer() {
+    const { botonHome, setBotonHome, botonNuevoVideo, setBotonNuevoVideo, logo1 } = useContext(GlobalContext)
 
+    /** true es home false es nuevo video */
+    const [botonHeader, setBotonHeader] = useState("home")
 
     const cambiarHome = () => {
         setBotonHome(!botonHome)
@@ -16,11 +18,15 @@ function Headeer({img}) {
         setBotonHome(!botonHome)
     }
 
+
+
+
+
     return (
         <header className={styles.headeer}>
 
             <Link to="/">
-                <img src={`./img/${img}.png`} alt="Logo" />
+                <img src={`./img/${logo1}.png`} alt="Logo" />
             </Link>
             <nav>
                 <Link to="/">

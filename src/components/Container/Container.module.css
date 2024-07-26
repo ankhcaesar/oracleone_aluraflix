@@ -1,0 +1,8 @@
+.container{
+    margin:5px 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}

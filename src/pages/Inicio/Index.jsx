@@ -1,9 +1,9 @@
+import CategoriasYVideos from "../../components/CategoriasYVideos/Index"
+
 function Inicio() {
     return (
         <>
-            <section>
-
-            </section>
+           <CategoriasYVideos/>
         </>
     )
 }

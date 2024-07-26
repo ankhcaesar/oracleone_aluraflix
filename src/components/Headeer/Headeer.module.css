@@ -1,14 +1,15 @@
 .headeer {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--bkPrincipal_gray);
     height: 10vh;
     padding: 0 30px;
-    border-top-style: solid;
+    border-bottom-style: solid;
     border-color: var(--Principal_blue);
     border-width: 4px;
-    box-shadow: 0px 5px 29px 2px var(--Principal_blue)  0.7;
+    box-shadow: 0px 5px 29px 2px var(--Principal_blue);
 }
 
 .botonPasivo {
