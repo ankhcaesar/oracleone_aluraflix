@@ -27,7 +27,7 @@ function Categorias(categoria) {
                 {videoFilter.map((video) => {
                     return (
                         <TarjetaVideo
-                        color={`categoria.color`}
+                        
                             key={video.id}
                             {...video}
                         />

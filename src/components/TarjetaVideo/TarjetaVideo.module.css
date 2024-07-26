@@ -8,11 +8,11 @@ height: 319px;
     border-radius: 15px;
     border-style: solid;
     border-width: 3px;
-    border-color:var(--Principal_blue) ;
+   /*border-color:var(--Principal_blue) ;*/
 
     margin: 5px 15px;
     ;
-    box-shadow:inset  0px 0px 10px 4px var(--Principal_blue);
+    /*box-shadow:inset  0px 0px 10px 4px var(--Principal_blue);*/
 }
 
 
