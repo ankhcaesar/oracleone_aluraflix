@@ -22,10 +22,9 @@ function Banner() {
                                 <div className={styles.titulo_descripcion}>
                                     <TituloDestacado
                                         titulo={destacado.categoria}
-                                        
-                                        
                                     />
-                                    <div className={styles.descripcion}>{destacado.descripcion}</div>
+                                    <h2 className={styles.tituloDescripcion}>{destacado.titulo}</h2>
+                                    <p className={styles.textoDescripcion} >{destacado.descripcion}</p>
                                 </div>
                                 <TarjetaDestacado
                                     {...destacado}
@@ -38,6 +37,5 @@ function Banner() {
         </>
     )
 }
-
 
 export default Banner
