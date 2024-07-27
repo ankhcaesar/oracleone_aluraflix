@@ -1,6 +1,8 @@
 import styles from "./TituloCategoria.module.css"
 
 function TituloCategoria(categoria) {
+
+    
     return (
         <section className={styles.container}>
             <div className={styles.titulos} style={{ backgroundColor: `rgb(${categoria.color})` }} >

@@ -1,7 +1,8 @@
-import { useContext } from "react"
 import styles from "./Banner.module.css"
+import { useContext } from "react"
 import { GlobalContext } from "../../context/Globalcontext"
-import Destacado from "./Destacado/Index"
+import TituloDestacado from "./Destacado/TituloDestacado/Index"
+import TarjetaDestacado from "./Destacado/TarjetaDestacado/Index"
 
 function Banner() {
 
@@ -11,16 +12,29 @@ function Banner() {
         <>
             {datadestacados.map((destacado) => {
                 return (
-                    <div className={styles.imgFondo}
-                        style={{ backgroundImage: `url(https://img.youtube.com/vi/${destacado.id_yt}/maxresdefault.jpg)` }}
-                        key={destacado.id}
-                    >
-                        <div className={styles.grardiente}>
+                    <section key={destacado.id}>
+                        <div className={styles.imgFondo}
+                            style={{ backgroundImage: `url(https://img.youtube.com/vi/${destacado.id_yt}/maxresdefault.jpg)` }}
+                        >
+                            <div className={styles.grardiente}>
+                            </div>
+                            <section className={styles.titulo_descripcion_y_video}>
+                                <div className={styles.titulo_descripcion}>
+                                    <TituloDestacado
+                                        titulo={destacado.categoria}
+                                        
+                                        
+                                    />
+                                    <div className={styles.descripcion}>{destacado.descripcion}</div>
+                                </div>
+                                <TarjetaDestacado
+                                    {...destacado}
+                                />
+                            </section>
                         </div>
-                    </div>
+                    </section>
                 )
             })}
-            <Destacado />
         </>
     )
 }

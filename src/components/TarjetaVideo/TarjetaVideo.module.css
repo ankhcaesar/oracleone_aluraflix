@@ -1,28 +1,30 @@
-.container {
- overflow: hidden;
- 
-width: 430px;
-height: 319px;
-   
+.container_video {
+    position: relative;
+    overflow: hidden;
+    width: 430px;
+    height: 319px;
     background-color: rgb(0, 0, 0);
+    border-radius: 15px;
+    margin: 5px 15px;
+}
+
+.video {
+    width: 425px;
+    height: 240px;
+    border-radius: 15px 15px 0PX 0PX;
+}
+
+.borde {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 430px;
+    height: 319px;
     border-radius: 15px;
     border-style: solid;
     border-width: 3px;
-   /*border-color:var(--Principal_blue) ;*/
-
-    margin: 5px 15px;
-    ;
-    /*box-shadow:inset  0px 0px 10px 4px var(--Principal_blue);*/
 }
 
-
-.cotainer_video {
-    width: 420px;
-    height: 240px;
-    position: relative;
-    object-fit: cover;
-    border-radius: 15px 15px 0PX 0PX;
-    opacity: .8;    
-    border: none;
-   
-}
