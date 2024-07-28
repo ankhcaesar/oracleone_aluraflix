@@ -1,15 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 export const GlobalContext = createContext();
 function GlobalContextProvider({ children }) {
-
-
-
-
-
-
-
 
     /** estado de botones home y nuevo video */
     const [botonHome, setBotonHome] = useState(true);
@@ -34,7 +29,6 @@ function GlobalContextProvider({ children }) {
         getData();
     }, []);
 
-
     /*Importar categorias */
     const [dataCategorias, setDataCategorias] = useState([]);
     useEffect(() => {
@@ -57,29 +51,25 @@ function GlobalContextProvider({ children }) {
         getDataV();
     }, []);
 
-    /**  no es necesario
-    const valoresIniciales =()=>{
-        const videoUrl = `https://www.youtube.com/embed/${data.id_yt}`;
-        const imagenS= `https://img.youtube.com/vi/${data.id_yt}/hqdefault.jpg.`;
-        const imagenXl= `https://img.youtube.com/vi/${data.id_yt}/maxresdefault.jpg.`;
-    
-    }
-    
-     */
+
+    /** manejar nuevos datos  */
+    const [categoriaNv, setCategoriaNv] = useState("");
+    const [tituloNv, setTituloNv] = useState("");
+    const [descripcionNv, setDescripcionNv] = useState("");
+    const [id_ytNv, setId_ytNv] = useState("");
+
 
 
     /** crea nuevo video */
     const crearVideo = (data) => {
-        let idNueva = uuid();
+        let idNueva = uuidv4();
 
         const dataAEnviar = {
             id: idNueva,
             categoria: data.categoriaNv,
             titulo: data.tituloNv,
             descripcion: data.descripcionNv,
-            url: data.urlNv,
-            id_yt: data.id_ytNV,
-            imagen: data.imagenNv
+            id_yt: data.id_ytNv,
         };
 
         fetch(`${url}/videos`, {
@@ -96,7 +86,7 @@ function GlobalContextProvider({ children }) {
                 return res.json();
             })
             .then((nuevoVideo) => {
-                setVideos([...videos, nuevoVideo]);
+                    ([...dataVideos, nuevoVideo]);
             })
 
             .catch((err) => {
@@ -104,17 +94,56 @@ function GlobalContextProvider({ children }) {
             });
     };
 
+    /** borrarVideo */
+    const borrarVideo = (id) => {
+        fetch(`${url}/videos/${id}`, { method: "DELETE" })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Error al eliminar el video");
+                }
+                return res.json();
+            })
+            .then(() => {
+                const newVideos = videos.filter((video) => video.id !== id);
+                setDataVideos(newVideos);
+            })
+            .catch((err) => {
+                console.error("Error: ", err);
+            });
+    };
+
+
+    /**limpiar inputs */
+    const limpiarInput = () => {
+        setTituloNv("");
+        setCategoriaNv("");
+        setDescripcionNv("");
+        setId_ytNv("");
+    };
+
+
+
+
     return (
         <GlobalContext.Provider
             value={{
                 logo1, logo2,
                 botonHome, setBotonHome,
                 botonNuevoVideo, setBotonNuevoVideo,
+
                 datadestacados, setDatadestacados,
                 dataCategorias, setDataCategorias,
-                dataVideos, setDataVideos
-                
+                dataVideos, setDataVideos,
 
+                crearVideo,
+                borrarVideo,
+                limpiarInput,
+
+                categoriaNv, setCategoriaNv,
+                tituloNv, setTituloNv,
+                descripcionNv, setDescripcionNv,
+                id_ytNv, setId_ytNv
+                
             }} >
             {children}
         </GlobalContext.Provider>

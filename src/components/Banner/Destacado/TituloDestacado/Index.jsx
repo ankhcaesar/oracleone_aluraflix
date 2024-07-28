@@ -6,7 +6,6 @@ function TituloDestacado({titulo}) {
     const { dataCategorias } = useContext(GlobalContext)
     const [color] = dataCategorias.filter(res => res.titulo === titulo)
 
-    console.log(titulo);
     return (
         <section className={styles.container}>
             <div className={styles.titulos} style={{ backgroundColor: `rgb(${color.color})` }} >

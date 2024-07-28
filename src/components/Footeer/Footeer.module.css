@@ -2,20 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--bkSecundario_darkblue);
     height: 10vh;
     border-top-style: solid;
-    border-color: rgb(34, 113, 209);
+    border-color: var(--Principal_blue);
     border-width: 4px;
-    box-shadow: 0px 5px 29px 2px rgba(34, 113, 209, 0.7);
-    &:hover{}
+    box-shadow: 0px 5px 29px 2px var(--Principal_blue);
 }
 
 .logo {
-    position: absolute;
-    z-index: 5;
+    position: absolute; 
     padding: 30px;
-
-
 }
-

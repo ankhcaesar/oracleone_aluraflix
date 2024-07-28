@@ -8,7 +8,6 @@ function TarjetaDestacado(destacado) {
 
     const [color] = dataCategorias.filter(res => res.titulo === destacado.categoria)
 
-
     /** tranformar data */
     const videoUrl = `https://www.youtube.com/embed/${destacado.id_yt}`;
 
@@ -27,7 +26,6 @@ function TarjetaDestacado(destacado) {
                     style={{ boxShadow: `inset  0px 0px 10px 4px rgb(${color.color})`, borderColor: `rgb(${color.color})` }}
                 ></div>
             </div>
-
 
         </section>
     )

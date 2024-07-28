@@ -4,19 +4,10 @@ import { Link } from "react-router-dom"
 import { GlobalContext } from "../../context/Globalcontext"
 
 function Headeer() {
-    const { botonHome, setBotonHome, botonNuevoVideo, setBotonNuevoVideo, logo1 } = useContext(GlobalContext)
+    const { botonHome, botonNuevoVideo, logo1 } = useContext(GlobalContext)
 
-    /** true es home false es nuevo video */
-    const [botonHeader, setBotonHeader] = useState("home")
 
-    const cambiarHome = () => {
-        setBotonHome(!botonHome)
-        setBotonNuevoVideo(!botonNuevoVideo)
-    }
-    const cambiarNuevoVideo = () => {
-        setBotonNuevoVideo(!botonNuevoVideo)
-        setBotonHome(!botonHome)
-    }
+
 
 
 
@@ -30,10 +21,10 @@ function Headeer() {
             </Link>
             <nav>
                 <Link to="/">
-                    <button className={botonHome ? styles.botonActivo : styles.botonPasivo} onClick={cambiarHome}> HOME </button>
+                    <button className={botonHome ? styles.botonActivo : styles.botonPasivo}> HOME </button>
                 </Link>
                 <Link to="/NuevoVideo">
-                    <button className={botonNuevoVideo ? styles.botonActivo : styles.botonPasivo} onClick={cambiarNuevoVideo} > NUEVO VIDEO </button>
+                    <button className={botonNuevoVideo ? styles.botonActivo : styles.botonPasivo} > NUEVO VIDEO </button>
                 </Link>
             </nav>
         </header>
