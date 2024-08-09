@@ -5,6 +5,7 @@ import Footeer from "../../components/Footeer/Index"
 import Container from "../../components/Container/Index"
 
 function Home() {
+
     return (
         <main>
             <GlobalContextProvider>

@@ -1,0 +1,21 @@
+.container {
+    position: fixed;
+    align-self: center;
+    width: 80%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--bkSecundario_darkblue);
+    color: var(--secondary-white);
+    font-size: 3rem;
+    border: 1px solid rgba(165, 165, 165, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 5px 29px 2px var(--Principal_blue);
+    
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    z-index: 99;
+}

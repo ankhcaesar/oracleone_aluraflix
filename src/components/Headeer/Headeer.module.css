@@ -1,14 +1,14 @@
-.headeer {
-    
+header {
+
+    height: 10vh;
+    padding: 0 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--bkPrincipal_gray);
-    height: 10vh;
-    padding: 0 30px;
     border-bottom-style: solid;
-    border-color: var(--Principal_blue);
     border-width: 4px;
+    border-color: var(--Principal_blue);
     box-shadow: 0px 5px 29px 2px var(--Principal_blue);
 }
 

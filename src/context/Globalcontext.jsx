@@ -6,6 +6,10 @@ import { v4 as uuidv4 } from 'uuid';
 export const GlobalContext = createContext();
 function GlobalContextProvider({ children }) {
 
+
+   //* Popup */
+   const [popUp, setPopUp] = useState({ show: false, mensaje: "", tipoMensaje: "" });
+
     /** estado de botones home y nuevo video */
     const [botonHome, setBotonHome] = useState(true);
     const [botonNuevoVideo, setBotonNuevoVideo] = useState(false);
@@ -86,11 +90,35 @@ function GlobalContextProvider({ children }) {
                 return res.json();
             })
             .then((nuevoVideo) => {
-                    ([...dataVideos, nuevoVideo]);
+                ([...dataVideos, nuevoVideo]);
+                setPopUp({
+                    show: true,
+                    mensaje: `Se ha agregado con exito el video: ${nuevoVideo.titulo}`,
+                    tipoMensaje: "check"
+                });
+                setTimeout(() => {
+                    setPopUp({
+                        show: false,
+                        mensaje: "",
+                        tipoMensaje: ""
+                    });
+                }, 3000);
             })
 
             .catch((err) => {
                 console.error("Error:", err);
+                setPopUp({
+                    show: true,
+                    mensaje: `Hubo un problema al agregar el video: ${err}`,
+                    tipoMensaje: "error"
+                });
+                setTimeout(() => {
+                    setPopUp({
+                        show: false,
+                        mensaje: "",
+                        tipoMensaje: ""
+                    });
+                }, 3000);
             });
     };
 
@@ -106,9 +134,33 @@ function GlobalContextProvider({ children }) {
             .then(() => {
                 const newVideos = videos.filter((video) => video.id !== id);
                 setDataVideos(newVideos);
+                setPopUp({
+                    show: true,
+                    mensaje: "Video Eliminado con exito.",
+                    tipoMensaje: "check"
+                });
+                setTimeout(() => {
+                    setPopUp({
+                        show: false,
+                        mensaje: "",
+                        tipoMensaje: ""
+                    });
+                }, 3000);
             })
             .catch((err) => {
                 console.error("Error: ", err);
+                setPopUp({
+                    show: true,
+                    mensaje: `Hubo un problema al eliminar el video: ${err}`,
+                    tipoMensaje: "error"
+                });
+                setTimeout(() => {
+                    setPopUp({
+                        show: false,
+                        mensaje: "",
+                        tipoMensaje: ""
+                    });
+                }, 3000);
             });
     };
 
@@ -120,6 +172,9 @@ function GlobalContextProvider({ children }) {
         setDescripcionNv("");
         setId_ytNv("");
     };
+
+
+
 
 
 
@@ -139,11 +194,13 @@ function GlobalContextProvider({ children }) {
                 borrarVideo,
                 limpiarInput,
 
+                popUp, setPopUp,
+
                 categoriaNv, setCategoriaNv,
                 tituloNv, setTituloNv,
                 descripcionNv, setDescripcionNv,
                 id_ytNv, setId_ytNv
-                
+
             }} >
             {children}
         </GlobalContext.Provider>

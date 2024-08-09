@@ -1,7 +1,7 @@
 import styles from "./Categorias.module.css"
 import TituloCategoria from "../../TituloCategoria/Index"
 import TarjetaVideo from "../../TarjetaVideo/Index"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { GlobalContext } from "../../../context/Globalcontext"
 
 
