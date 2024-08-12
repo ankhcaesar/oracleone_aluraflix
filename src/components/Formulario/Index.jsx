@@ -3,7 +3,7 @@ import Campo from "../Campo/Index"
 import ListaOpciones from "../ListaOpciones/Index"
 import AreaTexto from "../AreaTexto/Index"
 import Boton from "../Boton/Index"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../context/Globalcontext"
 import PopUp from "../PopUp"
 
@@ -15,9 +15,20 @@ function Formulario() {
         tituloNv, setTituloNv,
         descripcionNv, setDescripcionNv,
         id_ytNv, setId_ytNv,
+
         limpiarInput,
+        manejarCambiosInput,
         popUp
+        
     } = useContext(GlobalContext)
+
+    useEffect(()=>{
+        manejarCambiosInput("categoria", "");
+        manejarCambiosInput("titulo", "");
+        manejarCambiosInput("descripcion", "");
+        manejarCambiosInput("id_yt", "");
+    },[])
+
 
     const manejarEnvio = (e) => {
         e.preventDefault();
@@ -32,6 +43,10 @@ function Formulario() {
         limpiarInput();
     }
 
+
+
+
+
     return (
         <>
             <form
@@ -43,6 +58,7 @@ function Formulario() {
                     <label> Titulo </label>
                     <Campo
                         label="titulo"
+                        name="titulo"
                         placeholder="ingrese el título"
                         type="text"
                         required={true}
@@ -54,6 +70,7 @@ function Formulario() {
                     <label>Descripcion</label>
                     <AreaTexto
                         label="Descripcion"
+                        name="descripcion"
                         placeholder="¿De qué se trata este vídeo?"
                         type="textArea"
                         required={true}
@@ -67,6 +84,7 @@ function Formulario() {
                             label="GUARDAR"
                         />
                         <Boton
+
                             label="LIMPIAR"
                             type="button"
                             onClick={limpiarInput}
@@ -79,6 +97,7 @@ function Formulario() {
                     <label> Categoria </label>
                     <ListaOpciones
                         placeholder="seleccione la categoria"
+                        name="categoria"
                         required={true}
                         valor={categoriaNv}
                         actualizarValor={setCategoriaNv}
@@ -88,6 +107,7 @@ function Formulario() {
                     <label>Identidicador de YouTube</label>
                     <Campo
                         label="Id de YouTube"
+                        name="id_yt"
                         placeholder="ingrese ed Id de YouTube"
                         type="text"
                         required={true}

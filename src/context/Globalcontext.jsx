@@ -7,8 +7,8 @@ export const GlobalContext = createContext();
 function GlobalContextProvider({ children }) {
 
 
-   //* Popup */
-   const [popUp, setPopUp] = useState({ show: false, mensaje: "", tipoMensaje: "" });
+    //* Popup */
+    const [popUp, setPopUp] = useState({ show: false, mensaje: "", tipoMensaje: "" });
 
     /** estado de botones home y nuevo video */
     const [botonHome, setBotonHome] = useState(true);
@@ -19,7 +19,7 @@ function GlobalContextProvider({ children }) {
     const logo2 = "jconiv";
 
     /**Url del api */
-    const url = "http://localhost:3001";
+    const url = "http://localhost:3000";
 
 
     /**Importar destacados */
@@ -33,6 +33,7 @@ function GlobalContextProvider({ children }) {
         getData();
     }, []);
 
+
     /*Importar categorias */
     const [dataCategorias, setDataCategorias] = useState([]);
     useEffect(() => {
@@ -43,6 +44,7 @@ function GlobalContextProvider({ children }) {
         };
         getData();
     }, []);
+
 
     /*importar videos */
     const [dataVideos, setDataVideos] = useState([]);
@@ -61,6 +63,70 @@ function GlobalContextProvider({ children }) {
     const [tituloNv, setTituloNv] = useState("");
     const [descripcionNv, setDescripcionNv] = useState("");
     const [id_ytNv, setId_ytNv] = useState("");
+
+
+    /** Manejar nuevos ingresos */
+    const manejarCambiosInput = (nombre, valor) => {
+        switch (nombre) {
+            case "titulo":
+                setTituloNv(valor);
+                
+                break;
+            case "categoria":
+                setCategoriaNv(valor);
+                
+                break;
+
+            case "id_yt":
+                setId_ytNv(valor);
+                
+                break;
+            case "descripcion":
+                setDescripcionNv(valor);
+                
+                break;
+
+            default:
+                break;
+        }
+    };
+
+
+    /** Actualizar datos y videos */
+    const actualizarVideoInfo = (data) => {
+        const { categoriaNv, tituloNv, descripcionNv, id_ytNv } = data;
+
+        const ActualizarVideo = {
+            Categoria: categoriaNv,
+            titulo: tituloNv,
+            descripcion: descripcionNv,
+            id_yt: id_ytNv,
+        };
+
+        fetch(
+            `${url}/videos/${id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(ActualizarVideo),
+            }
+        )
+            .then((result) => result.json())
+            .then((updatedVideoFromServer) => {
+                const newInfo = videos.map((video) => {
+                    if (video.id === id) {
+                        return updatedVideoFromServer;
+                    }
+                    return video;
+                });
+                setVideos(newInfo);
+            })
+            .catch((err) => {
+                console.error("Error: ", err);
+            });
+    };
 
 
 
@@ -132,7 +198,7 @@ function GlobalContextProvider({ children }) {
                 return res.json();
             })
             .then(() => {
-                const newVideos = videos.filter((video) => video.id !== id);
+                const newVideos = dataVideos.filter((video) => video.id !== id);
                 setDataVideos(newVideos);
                 setPopUp({
                     show: true,
@@ -145,7 +211,7 @@ function GlobalContextProvider({ children }) {
                         mensaje: "",
                         tipoMensaje: ""
                     });
-                }, 3000);
+                }, 2000);
             })
             .catch((err) => {
                 console.error("Error: ", err);
@@ -160,7 +226,7 @@ function GlobalContextProvider({ children }) {
                         mensaje: "",
                         tipoMensaje: ""
                     });
-                }, 3000);
+                }, 2000);
             });
     };
 
@@ -195,6 +261,9 @@ function GlobalContextProvider({ children }) {
                 limpiarInput,
 
                 popUp, setPopUp,
+
+                actualizarVideoInfo,
+                manejarCambiosInput,
 
                 categoriaNv, setCategoriaNv,
                 tituloNv, setTituloNv,

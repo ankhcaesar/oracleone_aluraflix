@@ -3,6 +3,8 @@ import GlobalContextProvider from "../../context/Globalcontext"
 import Headeer from "../../components/Headeer/Index"
 import Footeer from "../../components/Footeer/Index"
 import Container from "../../components/Container/Index"
+import { useState } from "react"
+
 
 function Home() {
 
