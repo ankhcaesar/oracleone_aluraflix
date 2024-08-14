@@ -1,7 +1,7 @@
 .container {
     margin: 0px 30px;
 
-    @media(width < 769px) {
+    @media(width <= 720px) {
         margin: 0px 10px;
     }
 

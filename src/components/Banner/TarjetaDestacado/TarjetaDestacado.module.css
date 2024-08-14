@@ -3,7 +3,7 @@
     --height--imagen: 336px;
 
 
-    @media(width< 769px) {
+    @media(width<= 720px) {
         --width--imagen: 350px;
         --height--imagen: 190px;
 
@@ -22,7 +22,7 @@
     border-radius: 15px;
     margin: 5px 15px;
 
-    @media(width< 769px) {
+    @media(width <= 720px) {
         margin: 0px;
     }
 

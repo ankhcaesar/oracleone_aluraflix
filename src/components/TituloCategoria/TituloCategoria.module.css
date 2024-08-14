@@ -8,7 +8,7 @@
     border-radius: 15px;
     box-shadow: 1px 2px 4px 0 var(--Realblack);
 
-    @media(width < 769px) {
+    @media(width <= 720px) {
         margin: 15px 0 15px 50px;
         width: var(--width);
         height: 50px;
@@ -26,7 +26,7 @@
     color: rgb(245, 245, 245);
     padding: 30px;
 
-    @media(width < 769px) {
+    @media(width <= 720px) {
         font-size: 28px;
         padding: 25px;
     }

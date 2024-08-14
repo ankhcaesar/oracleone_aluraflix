@@ -5,7 +5,7 @@
     --video-width: 435px;
     --video-height: 240px;
 
-    @media(width < 769px) {
+    @media(width <= 720px) {
         --width: 350px;
         --height: 215px;
 
@@ -24,7 +24,7 @@
     border-radius: 15px;
     margin: 5px 15px;
 
-    @media(width < 769px) {
+    @media(width <= 720px) {
         margin: 5px 25px;
     }
 }
