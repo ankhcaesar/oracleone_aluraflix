@@ -10,7 +10,7 @@ function Headeer() {
     return (
         <header>
             <Link to="/">
-                <img src={`./img/${logo1}.png`} alt="Logo" />
+                <img className={styles.logoAluraflix} src={`./img/${logo1}.png`} alt="Logo" />
             </Link>
 
             <nav>

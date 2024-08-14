@@ -1,0 +1,52 @@
+* {
+    --width--imagen: 600px;
+    --height--imagen: 336px;
+
+
+    @media(width< 769px) {
+        --width--imagen: 350px;
+        --height--imagen: 190px;
+
+    }
+
+
+}
+
+
+.container_video {
+    position: relative;
+    overflow: hidden;
+    width: var(--width--imagen);
+    height: var(--height--imagen);
+    background-color: rgb(0, 0, 0);
+    border-radius: 15px;
+    margin: 5px 15px;
+
+    @media(width< 769px) {
+        margin: 0px;
+    }
+
+}
+
+
+
+.video {
+    width: var(--width--imagen);
+    height: var(--height--imagen);
+    border-radius: 15px 15px 0PX 0PX;
+}
+
+
+.borde {
+    width: var(--width--imagen);
+    height: var(--height--imagen);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 3px;
+}

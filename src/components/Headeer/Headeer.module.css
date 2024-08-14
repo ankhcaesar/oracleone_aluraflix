@@ -10,7 +10,19 @@ header {
     border-width: 4px;
     border-color: var(--Principal_blue);
     box-shadow: 0px 5px 29px 2px var(--Principal_blue);
+
+    @media(width < 425px) {
+        padding: 0 5px;
+
+    }
 }
+
+.logoAluraflix {
+    @media(width < 425px) {
+        transform: scale(0.8);
+    }
+}
+
 
 .botonPasivo {
     cursor: pointer;
@@ -29,6 +41,10 @@ header {
         background-color: var(--Realblack);
         box-shadow: inset 0px 0px 3px 2px var(--Principal_blue);
         color: var(--Principal_blue);
+    }
+
+    @media(width < 425px) {
+        margin: 0 5px;
     }
 }
 
@@ -50,6 +66,10 @@ header {
         box-shadow: inset 0px 0px 3px 2px var(--RealWhite);
         color: var(--RealWhite);
         background-color: transparent;
+    }
+
+    @media(width < 425px) {
+        margin: 0 5px;
     }
 
 }

@@ -8,6 +8,10 @@
     border-color: var(--Principal_blue);
     border-width: 4px;
     box-shadow: 0px 5px 29px 2px var(--Principal_blue);
+    @media(width < 425px){
+        position: relative;
+        bottom: 0px;
+    }
 }
 
 .logo {

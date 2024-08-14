@@ -8,20 +8,27 @@
     width: 100%;
     margin: 0px 0 35px;
     overflow: auto;
-    padding: 0 0 15px 0px
+    padding: 0 0 15px 0px;
+
+    @media(width < 769px){
+        padding: 0 0 10px 0px;
+        margin: 0px 0 15px;
+    }
+
+    @media(width < 425px){
+        margin: 0px 0 15px 15px;
+
+    }
+
 }
 
 .tarjetas::-webkit-scrollbar {
-
     height: 15px;
     background: rgba(34, 113, 209, 17%);
     border-radius: 30px;
-
 }
 
 .tarjetas::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg , #2271D1 , #113A6B 56%);
-;
     border-radius: 30px;
-
 }

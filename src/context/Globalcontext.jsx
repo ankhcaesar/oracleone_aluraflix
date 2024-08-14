@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 export const GlobalContext = createContext();
 function GlobalContextProvider({ children }) {
 
+    /** datos para el modal*/
+    const [videoSeleccionado, setVideoSeleccionado] = useState(null)
 
     //* Popup */
     const [popUp, setPopUp] = useState({ show: false, mensaje: "", tipoMensaje: "" });
@@ -70,20 +72,20 @@ function GlobalContextProvider({ children }) {
         switch (nombre) {
             case "titulo":
                 setTituloNv(valor);
-                
+
                 break;
             case "categoria":
                 setCategoriaNv(valor);
-                
+
                 break;
 
             case "id_yt":
                 setId_ytNv(valor);
-                
+
                 break;
             case "descripcion":
                 setDescripcionNv(valor);
-                
+
                 break;
 
             default:
@@ -94,17 +96,18 @@ function GlobalContextProvider({ children }) {
 
     /** Actualizar datos y videos */
     const actualizarVideoInfo = (data) => {
-        const { categoriaNv, tituloNv, descripcionNv, id_ytNv } = data;
 
         const ActualizarVideo = {
-            Categoria: categoriaNv,
-            titulo: tituloNv,
-            descripcion: descripcionNv,
-            id_yt: id_ytNv,
+
+            categoria: data.categoriaNv,
+            titulo: data.tituloNv,
+            descripcion: data.descripcionNv,
+            id_yt: data.id_ytNv,
+
         };
 
         fetch(
-            `${url}/videos/${id}`,
+            `${url}/videos/${data.id}`,
             {
                 method: "PUT",
                 headers: {
@@ -115,13 +118,22 @@ function GlobalContextProvider({ children }) {
         )
             .then((result) => result.json())
             .then((updatedVideoFromServer) => {
-                const newInfo = videos.map((video) => {
-                    if (video.id === id) {
+                const newInfo = dataVideos.map((video) => {
+                    if (video.id === data.id) {
                         return updatedVideoFromServer;
                     }
                     return video;
                 });
-                setVideos(newInfo);
+                setDataVideos(newInfo);
+                setPopUp({
+                    show: true,
+                    mensaje: "video Actualizado con éxito",
+                    tipoMensaje: "check"
+                });
+
+                setTimeout(() => {
+                    setPopUp({ show: false, mensaje: "", tipoMensaje: "" });
+                }, 2000);
             })
             .catch((err) => {
                 console.error("Error: ", err);
@@ -129,17 +141,16 @@ function GlobalContextProvider({ children }) {
     };
 
 
-
     /** crea nuevo video */
     const crearVideo = (data) => {
         let idNueva = uuidv4();
 
         const dataAEnviar = {
-            id: idNueva,
             categoria: data.categoriaNv,
             titulo: data.tituloNv,
             descripcion: data.descripcionNv,
             id_yt: data.id_ytNv,
+            id: idNueva,
         };
 
         fetch(`${url}/videos`, {
@@ -168,7 +179,7 @@ function GlobalContextProvider({ children }) {
                         mensaje: "",
                         tipoMensaje: ""
                     });
-                }, 3000);
+                }, 2000);
             })
 
             .catch((err) => {
@@ -184,7 +195,7 @@ function GlobalContextProvider({ children }) {
                         mensaje: "",
                         tipoMensaje: ""
                     });
-                }, 3000);
+                }, 2000);
             });
     };
 
@@ -240,9 +251,8 @@ function GlobalContextProvider({ children }) {
     };
 
 
-
-
-
+/** color categoria destacado */
+const [colorDestacado, setColorDestacado] = useState([]);
 
 
     return (
@@ -261,14 +271,18 @@ function GlobalContextProvider({ children }) {
                 limpiarInput,
 
                 popUp, setPopUp,
+                videoSeleccionado, setVideoSeleccionado,
 
                 actualizarVideoInfo,
                 manejarCambiosInput,
 
+
                 categoriaNv, setCategoriaNv,
                 tituloNv, setTituloNv,
                 descripcionNv, setDescripcionNv,
-                id_ytNv, setId_ytNv
+                id_ytNv, setId_ytNv,
+
+                colorDestacado, setColorDestacado
 
             }} >
             {children}

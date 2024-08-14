@@ -32,12 +32,12 @@ function Formulario() {
 
     const manejarEnvio = (e) => {
         e.preventDefault();
-        console.log("manejarEnvio")
+ 
         let datosAEnviar = {
+            categoriaNv,
             tituloNv,
-            id_ytNv,
             descripcionNv,
-            categoriaNv
+            id_ytNv
         }
         crearVideo(datosAEnviar);
         limpiarInput();

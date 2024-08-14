@@ -1,7 +1,7 @@
 import styles from "./Categorias.module.css"
 import TituloCategoria from "../../TituloCategoria/Index"
 import TarjetaVideo from "../../TarjetaVideo/Index"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../../context/Globalcontext"
 
 
@@ -9,13 +9,7 @@ function Categorias(categoria) {
 
     const { dataVideos } = useContext(GlobalContext);
 
-
-
-
-
     const videoFilter = dataVideos.filter(video => video.categoria === categoria.titulo)
-
-
 
     return (
         <div className={styles.container}>
@@ -27,7 +21,7 @@ function Categorias(categoria) {
                 {videoFilter.map((video) => {
                     return (
                         <TarjetaVideo
-                        
+
                             key={video.id}
                             {...video}
                         />

@@ -1,16 +1,26 @@
 import styles from "./TarjetaVideo.module.css"
 import iconoBORRAR from "./tachito_blanco.svg"
 import iconoEDITAR from "./lapiz.svg"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/Globalcontext";
 import Botones from "./Botones/Index"
 
 
 function TarjetaVideo(video) {
 
-    const { dataCategorias, borrarVideo } = useContext(GlobalContext)
+    const { dataCategorias,
+        borrarVideo,
+        setVideoSeleccionado
+    } = useContext(GlobalContext)
 
-    const [color] = dataCategorias.filter(res => res.titulo === video.categoria)
+
+   /** traer color categorias */
+    const [color, setColor] = useState([]);
+    useEffect(() => {
+        const [colore] = dataCategorias.filter(res => res.titulo === video.categoria)
+        setColor(colore)
+        
+    }, [])
 
 
     /** tranformar data */
@@ -27,21 +37,21 @@ function TarjetaVideo(video) {
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                 />
-                            <div className={styles.container_botones}>
-                <Botones
-                    action={borrarVideo}
-                    video={video}
-                    img={iconoBORRAR}
-                >BORRAR
-                </Botones>
+                <div className={styles.container_botones}>
+                    <Botones
+                        action={borrarVideo}
+                        video={video}
+                        img={iconoBORRAR}
+                    >BORRAR
+                    </Botones>
 
-                <Botones
-                    action={""}
-                    video={video}
-                    img={iconoEDITAR}
-                >EDITAR
-                </Botones>
-            </div>
+                    <Botones
+                        action={setVideoSeleccionado}
+                        video={video}
+                        img={iconoEDITAR}
+                    >EDITAR
+                    </Botones>
+                </div>
                 <div className={styles.borde}
                     style={{ boxShadow: `inset  0px 0px 10px 4px rgb(${color.color})`, borderColor: `rgb(${color.color})` }}
                 ></div>

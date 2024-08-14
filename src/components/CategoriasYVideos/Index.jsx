@@ -1,13 +1,15 @@
-
 import { useContext } from "react"
 import { GlobalContext } from "../../context/Globalcontext"
 import Categorias from "../CategoriasYVideos/Categorias/Index"
 import PopUp from "../PopUp/index"
+import Modal from "../Modal/Index"
 
 
 function CategoriasYVideos() {
     const { dataCategorias,
-            popUp
+        popUp,
+        videoSeleccionado,
+        setVideoSeleccionado
 
     } = useContext(GlobalContext)
 
@@ -22,6 +24,7 @@ function CategoriasYVideos() {
                     />
                 )
             })}
+            <Modal video={videoSeleccionado} cerrarModal={() => { setVideoSeleccionado(null) }} />
             {popUp.show && <PopUp mensaje={popUp.mensaje} tipo={popUp.tipoMensaje} />}
 
         </>
