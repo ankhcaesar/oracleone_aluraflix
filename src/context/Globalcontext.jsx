@@ -21,7 +21,7 @@ function GlobalContextProvider({ children }) {
     const logo2 = "jconiv";
 
     /**Url del api */
-    const url = "http://localhost:3000";
+    const url = "https://my-json-server.typicode.com/ankhcaesar/alura_flix_fake_api";
 
 
     /**Importar destacados */
