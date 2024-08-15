@@ -252,7 +252,7 @@ function GlobalContextProvider({ children }) {
 
 
 /** color categoria destacado */
-const [colorDestacado, setColorDestacado] = useState([]);
+const [colorDestacado, setColorDestacado] = useState();
 
 
     return (

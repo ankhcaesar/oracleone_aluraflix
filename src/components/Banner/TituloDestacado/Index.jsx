@@ -1,5 +1,5 @@
 import styles from "./TituloDestacado.module.css"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../context/Globalcontext";
 
 
@@ -13,7 +13,7 @@ function TituloDestacado({ titulo }) {
 
     useEffect(() => {
         let [colore] = dataCategorias.filter(res => res.titulo === titulo)
-        setColorDestacado(colore.color)
+        setColorDestacado(colore?.color)
     })
 
     return (
